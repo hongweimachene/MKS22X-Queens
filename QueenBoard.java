@@ -5,8 +5,18 @@ public class QueenBoard{
   }
   private boolean addQueens(int r, int c){
     board[r][c] = -1;
+    for (int i = c+1; i < board[r].length; i++) {
+      board[r][i] = 1;
+    }
     for (int i = r+1; i < board.length; i++) {
-      
+      for (int j = c+1; j < board[r].length; j++) {
+        board[r][j] = 1;
+      }
+    }
+    for (int i = r-1; i > 0; i--) {
+      for (int j = c+1; j < board[r].length; j++) {
+        board[r][j] = 1;
+      }
     }
   }
   private boolean removeQueen(int r, int c){
