@@ -38,12 +38,23 @@ public class QueenBoard{
     }
     return true;
   }
-  
+
   private boolean removeQueen(int r, int c){
     board[r][c] = 0;
   }
   public String toString(){
-
+    String s = "";
+    for (int i = 0; i < board.length; i++){
+      for (int j = 0; j < board[i].length; j++){
+        if (board[i][j] == 0){
+          s+="Q "
+        } else {
+          s+="_ ";
+        }
+      }
+      s+="/n";
+    }
+    return s;
   }
 
   /**
