@@ -46,7 +46,7 @@ public class QueenBoard{
     String s = "";
     for (int i = 0; i < board.length; i++){
       for (int j = 0; j < board[i].length; j++){
-        if (board[i][j] == 0){
+        if (board[i][j] == -1){
           s+="Q "
         } else {
           s+="_ ";
@@ -64,12 +64,10 @@ public class QueenBoard{
   */
   public boolean solve() {
     for (int i = 0; i < board.length; i++) {
-      for (int j = 0; j < board[i].length; j++) {
-        if (!(addQueens(i,j))) {
-          removeQueen(i,j);
-        }
-      }
-    }
+  }
+
+  private boolean solveR(int col) {
+    
   }
   public int countSolutions() {
 
