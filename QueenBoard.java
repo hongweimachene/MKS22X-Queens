@@ -73,7 +73,7 @@ public class QueenBoard{
         if (board[i][j] == -1){
           s+="Q ";
         } else {
-          s+="0 ";
+          s+="_ ";
         }
       }
       s+="\n";
