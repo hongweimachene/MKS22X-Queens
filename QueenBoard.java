@@ -1,6 +1,6 @@
 public class QueenBoard{
   private int[][] board;
-  private static int count;
+  private int count;
   public QueenBoard(int size) {
     board = new int[size][size];
   }
@@ -51,6 +51,18 @@ public class QueenBoard{
     board[r][c] = 0;
     return true;
   }
+  /**
+  *@return The output string formatted as follows:
+  *All numbers that represent queens are replaced with 'Q'
+  *all others are displayed as underscores '_'
+  *There are spaces between each symbol:
+  *"""_ _ Q _
+  *Q _ _ _
+  *_ _ _ Q
+  *_ Q _ _"""
+  *(pythonic string notation for clarity,
+  *excludes the character up to the *)
+  */
   public String toString(){
     String s = "";
     for (int i = 0; i < board.length; i++){
@@ -72,6 +84,13 @@ public class QueenBoard{
   *@throws IllegalStateException when the board starts with any non-zero value
   */
   public boolean solve() {
+    for (int i = 0; i < board.length; i++){
+      for (int j = 0; j < board[i].length; j++){
+        if (board[i][j] != 0) {
+          throw new IllegalStateException("The board is not empty.");
+        }
+      }
+    }
     return solveR(0);
   }
 
@@ -86,12 +105,50 @@ public class QueenBoard{
         }
         removeQueen(row, col);
       }
+
     }
     return false;
   }
 
-   // public int countSolutions() {
-   // }
+  /**
+  *@return the number of solutions found, and leaves the board filled with only 0's
+  *@throws IllegalStateException when the board starts with any non-zero value
+  */
+  public int countSolutions() {
+    for (int i = 0; i < board.length; i++){
+      for (int j = 0; j < board[i].length; j++){
+        if (board[i][j] != 0) {
+          throw new IllegalStateException("The board is not empty.");
+        }
+      }
+    }
+    countH(0);
+    return count;
+  }
+
+  private boolean countH(int col){
+    if (col == board[0].length) {
+      count++;
+    } else {
+      for (int row = 0; row < board.length; row++) {
+        if (addQueens(row, col)){
+          if (countH(col+1)){
+            return true;
+          }
+          removeQueen(row, col);
+        }
+      }
+    }
+    return false;
+  }
+
+  private void clearBoard(){
+    for (int i = 0; i < board.length; i++) {
+      for (int j = 0; j < board[i].length; j++) {
+        board[i][j] = 0;
+      }
+    }
+  }
 
   public static void main(String[] args) {
     QueenBoard a = new QueenBoard(8);
@@ -109,6 +166,8 @@ public class QueenBoard{
     // System.out.println(a.addQueens(3,4));;
     // System.out.println(a.addQueens(6,5));
     System.out.println(a);
-    // System.out.println(a.countSolutions());
+    a.clearBoard();
+    System.out.println(a.countSolutions());
+    System.out.println(a);
   }
 }
