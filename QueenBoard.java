@@ -94,6 +94,7 @@ public class QueenBoard{
         }
       }
     }
+    if (board.length == 2 || board.length == 3) return false;
     return solveR(0);
   }
 
@@ -128,7 +129,7 @@ public class QueenBoard{
         }
       }
     }
-
+    if (board.length == 2 || board.length == 3) return 0;
     //helper modifies count variable
     countH(0);
     return count;
@@ -163,21 +164,35 @@ public class QueenBoard{
   // public static void main(String[] args) {
   //   QueenBoard a = new QueenBoard(8);
   //   a.solve();
-  //   // System.out.println(a.addQueens(0,0));
-  //   // System.out.println(a.addQueens(0,1));
-  //   // System.out.println(a.addQueens(1,1));
-  //   // System.out.println(a.addQueens(2,1));
-  //   // System.out.println(a.addQueens(0,2));
-  //   // System.out.println(a.addQueens(1,2));
-  //   // System.out.println(a.addQueens(2,2));
-  //   // System.out.println(a.addQueens(3,2));
-  //   // System.out.println(a.addQueens(4,2));
-  //   // System.out.println(a.addQueens(1,3));
-  //   // System.out.println(a.addQueens(3,4));;
-  //   // System.out.println(a.addQueens(6,5));
   //   System.out.println(a);
   //   a.clearBoard();
   //   System.out.println(a.countSolutions());
   //   System.out.println(a);
+  //   QueenBoard b = new QueenBoard(4);
+  //   b.solve();
+  //   System.out.println(b);
+  //   b.clearBoard();
+  //   System.out.println(b.countSolutions());
+  //   System.out.println(b);
+  //   QueenBoard c = new QueenBoard(3);
+  //   System.out.println(c.solve());
+  //   c.clearBoard();
+  //   System.out.println(c.countSolutions());
+  //   QueenBoard d = new QueenBoard(2);
+  //   System.out.println(d.solve());
+  //   d.clearBoard();
+  //   System.out.println(d.countSolutions());
+  //   QueenBoard e = new QueenBoard(12);
+  //   e.solve();
+  //   System.out.println(e);
+  //   e.clearBoard();
+  //   System.out.println(e.countSolutions());
+  //   System.out.println(e);
+  //   QueenBoard f = new QueenBoard(7);
+  //   f.solve();
+  //   System.out.println(f);
+  //   f.clearBoard();
+  //   System.out.println(f.countSolutions());
+  //   System.out.println(f);
   // }
 }
